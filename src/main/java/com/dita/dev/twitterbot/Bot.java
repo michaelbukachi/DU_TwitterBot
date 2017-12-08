@@ -100,6 +100,56 @@ public class Bot {
         twitterStream.filter(new FilterQuery().follow(new long[]{twitterID}));
 
     }
+    public void retweetByHash(String[] hash){
+        final TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
+        twitterStream.setOAuthConsumer(CONSUMER_KEY,CONSUMER_KEY_SECRET);
+        twitterStream.setOAuthAccessToken(accesstoken);
+
+        StatusListener statusListener = new StatusListener() {
+            @Override
+            public void onStatus(Status status) {
+                try{
+                    String stat = status.getText();
+                    if(!status.isRetweet()){
+                        if("en".equals(status.getLang())){
+                            System.out.println(status.getText()+":@"+status.getUser().getScreenName());
+                            logFileWriter.append(stat);
+                            logFileWriter.flush();
+                        }
+                    }
+
+                }catch (IOException ex){
+                    ex.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {
+
+            }
+
+            @Override
+            public void onTrackLimitationNotice(int i) {
+
+            }
+
+            @Override
+            public void onScrubGeo(long l, long l1) {
+
+            }
+
+            @Override
+            public void onStallWarning(StallWarning stallWarning) {
+
+            }
+
+            @Override
+            public void onException(Exception e) {
+                e.printStackTrace();
+            }
+        };
+        twitterStream.addListener(statusListener);
+        twitterStream.filter(new FilterQuery().track(hash));    }
     
     
 
