@@ -6,28 +6,43 @@ import twitter4j.*;
 import twitter4j.auth.AccessToken;
 import twitter4j.conf.ConfigurationBuilder;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.logging.Level;
 
 public class Bot {
-    private final String CONSUMER_KEY ="";
-    private final String CONSUMER_KEY_SECRET="";
-    private final String ACCESS_TOKEN ="";
-    private final String ACCESS_TOKEN_SECRET="";
+    private final String CONSUMER_KEY ="WRLDGFBLa5xVRyCKoGUSMosp4";
+    private final String CONSUMER_KEY_SECRET="mK0nKAmVVjG9MTOqsspOrpbgYHoSHbJCLU4FlXbtpRzDLGAFzu";
+    private final String ACCESS_TOKEN ="939222012609925120-cnzVyBniwpe4D4Smwhbc4trhBtAz1PN";
+    private final String ACCESS_TOKEN_SECRET="od2XxN4BgF4IBdLS4k4hKJYQWBsF7L7YcuJpN7rCOzgja";
     private File logFile;
     private BufferedWriter logFileWriter;
 
     private Twitter twitter;
     private AccessToken accesstoken;
 
-    public static void main(String[] args) {
-
-        
-    }
     public Bot(){
         this.twitter = new TwitterFactory().getInstance();
+
+        logFile = new File("./log");
+        try{
+            logFileWriter = new BufferedWriter(new FileWriter(logFile));
+        }catch (FileNotFoundException ex){
+            ex.printStackTrace();
+        }catch (IOException ex){
+            ex.printStackTrace();
+        }
+        try{
+            this.start();
+        }catch (TwitterException ex){
+            try{
+                logFileWriter.append(ex.getMessage());
+                logFileWriter.flush();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
     private void start() throws TwitterException{
@@ -112,6 +127,7 @@ public class Bot {
                     String stat = status.getText();
                     if(!status.isRetweet()){
                         if("en".equals(status.getLang())){
+
                             System.out.println(status.getText()+":@"+status.getUser().getScreenName());
                             logFileWriter.append(stat);
                             logFileWriter.flush();
