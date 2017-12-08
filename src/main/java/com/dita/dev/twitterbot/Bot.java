@@ -125,6 +125,8 @@ public class Bot {
             public void onStatus(Status status) {
                 try{
                     String stat = status.getText();
+                    StatusUpdate statusUpdate = new StatusUpdate(stat);
+                    twitter.updateStatus(statusUpdate);
                     if(!status.isRetweet()){
                         if("en".equals(status.getLang())){
 
@@ -136,6 +138,8 @@ public class Bot {
 
                 }catch (IOException ex){
                     ex.printStackTrace();
+                } catch (TwitterException e) {
+                    e.printStackTrace();
                 }
             }
 
