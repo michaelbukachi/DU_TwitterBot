@@ -76,6 +76,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/src/main/java/com/dita/dev/twitterbot/Utils/credentials.properties
 
 # End of https://www.gitignore.io/api/netbeans,code-java,intellij+all
-/src/main/java/com/dita/dev/twitterbot/Utils/credentials.properties
