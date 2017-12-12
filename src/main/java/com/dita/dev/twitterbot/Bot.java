@@ -10,10 +10,10 @@ import java.io.*;
 import java.util.logging.Level;
 
 public class Bot {
-    private final String CONSUMER_KEY ="WRLDGFBLa5xVRyCKoGUSMosp4";
-    private final String CONSUMER_KEY_SECRET="mK0nKAmVVjG9MTOqsspOrpbgYHoSHbJCLU4FlXbtpRzDLGAFzu";
-    private final String ACCESS_TOKEN ="939222012609925120-cnzVyBniwpe4D4Smwhbc4trhBtAz1PN";
-    private final String ACCESS_TOKEN_SECRET="od2XxN4BgF4IBdLS4k4hKJYQWBsF7L7YcuJpN7rCOzgja";
+    private final String CONSUMER_KEY ="Nq0wripBVQ9ARr40i3x73f8xK";
+    private final String CONSUMER_KEY_SECRET="Lhr8EhGSzLnwek8bj1kxYeGoGTKb7sokMtH3MbnRUVJMdJCzfR";
+    private final String ACCESS_TOKEN ="939222012609925120-q0NnaObiEXCh3P24kkUpfOp1T2AgRrD";
+    private final String ACCESS_TOKEN_SECRET="ONXFXlFUg1gBMsFpICuHDYNMyZUB38Rop2oBtUcp3xKB8";
     private File logFile;
     private BufferedWriter logFileWriter;
 
