@@ -7,25 +7,35 @@ import twitter4j.auth.AccessToken;
 import twitter4j.conf.ConfigurationBuilder;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Properties;
 import java.util.logging.Level;
 
 public class Bot {
-    private final String CONSUMER_KEY ="Nq0wripBVQ9ARr40i3x73f8xK";
-    private final String CONSUMER_KEY_SECRET="Lhr8EhGSzLnwek8bj1kxYeGoGTKb7sokMtH3MbnRUVJMdJCzfR";
-    private final String ACCESS_TOKEN ="939222012609925120-q0NnaObiEXCh3P24kkUpfOp1T2AgRrD";
-    private final String ACCESS_TOKEN_SECRET="ONXFXlFUg1gBMsFpICuHDYNMyZUB38Rop2oBtUcp3xKB8";
+
     private File logFile;
     private BufferedWriter logFileWriter;
-
+    Properties properties = new Properties();
+    InputStream input ;
     private Twitter twitter;
     private AccessToken accesstoken;
+    ArrayList<String> details = getBotCredentials();
+    private final String CONSUMER_KEY = details.get(0);
+    private final String CONSUMER_KEY_SECRET=details.get(1);
+    private final String ACCESS_TOKEN =details.get(2);
+    private final String ACCESS_TOKEN_SECRET=details.get(3);
 
-    public Bot(){
+
+
+    public Bot() throws IOException {
         this.twitter = new TwitterFactory().getInstance();
 
         logFile = new File("./log");
         try{
             logFileWriter = new BufferedWriter(new FileWriter(logFile));
+
+
+
         }catch (FileNotFoundException ex){
             ex.printStackTrace();
         }catch (IOException ex){
@@ -171,6 +181,33 @@ public class Bot {
         twitterStream.addListener(statusListener);
         twitterStream.filter(new FilterQuery().track(hash));    }
     
-    
+
+        public  ArrayList<String> getBotCredentials() throws IOException{
+            ArrayList<String> botdetails = new ArrayList<String>();
+            ArrayList<String> error = new ArrayList<String>();
+            String error_String = "Not Able to Find File";
+            error.add(error_String);
+            try{
+                File filename = new File("credentials.properties");
+                input = new FileInputStream(filename);
+                properties.load(input);
+                botdetails.add(properties.getProperty("CONSUMER_KEY"));
+                botdetails.add(properties.getProperty("CONSUMER_KEY_SECRET"));
+                botdetails.add(properties.getProperty("ACCESS_TOKEN"));
+                botdetails.add(properties.getProperty("ACCESS_TOKEN_SECRET"));
+
+
+
+
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }finally {
+                if(input!=null){
+                    input.close();
+                }
+            }
+        return botdetails;
+        }
+
 
 }
