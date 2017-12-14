@@ -78,5 +78,7 @@ nbdist/
 .nb-gradle/
 /src/main/java/resources/credentials.properties
 /credentials.properties
-
+/log
 # End of https://www.gitignore.io/api/netbeans,code-java,intellij+all
+
+
