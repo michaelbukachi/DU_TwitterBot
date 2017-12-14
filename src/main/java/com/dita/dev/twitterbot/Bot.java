@@ -195,6 +195,7 @@ public class Bot {
                 botdetails.add(properties.getProperty("CONSUMER_KEY_SECRET"));
                 botdetails.add(properties.getProperty("ACCESS_TOKEN"));
                 botdetails.add(properties.getProperty("ACCESS_TOKEN_SECRET"));
+                botdetails.add(properties.getProperty("HASH_TAG"));
 
 
 
