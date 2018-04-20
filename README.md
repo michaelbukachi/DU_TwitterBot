@@ -5,4 +5,5 @@ A twitter bot to hanlde Daystar University tweets
 1. Clone the repo
 2. Create a copy of example.properties and rename the the new file to credentials.properties
 3. Set your twitter credentials.
-4. Start tweeting, retweeting!! :)
+4. Set # Tag
+5. Start tweeting, retweeting!! :)
