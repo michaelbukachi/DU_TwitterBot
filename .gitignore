@@ -68,6 +68,8 @@ fabric.properties
 
 .idea/
 target/
+DU_TwitterBot.iml
+Twitter.jar
 
 ### NetBeans ###
 nbproject/private/
