@@ -68,6 +68,8 @@ fabric.properties
 
 .idea/
 target/
+DU_TwitterBot.iml
+Twitter.jar
 
 ### NetBeans ###
 nbproject/private/
@@ -78,5 +80,7 @@ nbdist/
 .nb-gradle/
 /src/main/java/resources/credentials.properties
 /credentials.properties
-
+/log
 # End of https://www.gitignore.io/api/netbeans,code-java,intellij+all
+
+
